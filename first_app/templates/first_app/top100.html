@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Отчет за период</title>
+</head>
+<body>
+    <a href="{% url 'period' %}">Отчет по заказам за период</a>
+    <p>Выполнено {{ queries|length }} запросов к базе данных</p>
+    <table>
+        <caption>Отчет по 100 самым продаваемым товарам</caption>
+        <tr>
+            <th>Название товара</th>
+            <th>Данные</th>
+        </tr>
+
+        {% for order in orders %}
+        <tr>
+            <td>{{order.product_name}}</td>
+            <td>{{order.data}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form action="https://webhook.site/2d4be708-6b6f-45d6-9d00-e02181007afa" method="GET">
+        <input type="text" name="int" list="hello">
+        <datalist id='hello'>
+            <option value="Привет"></option>
+            <option value="Пока"></option>
+        </datalist>
+
+        <button type="submit">Привет.</button>
+    </form>
+
+</body>
+</html>
